@@ -12,6 +12,8 @@ sorting task.
 ## Demo
 
 [Watch the cube sort demo](assets/cube_sort_demo.mp4)
+https://github.com/user-attachments/assets/c74d84f5-29e5-496e-8775-abef5579f925
+
 
 ## Included
 
