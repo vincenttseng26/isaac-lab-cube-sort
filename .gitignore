@@ -28,6 +28,7 @@ reports/
 *.pt
 *.ckpt
 *.mp4
+!assets/cube_sort_demo.mp4
 *.usd
 *.usda
 *.usdc
