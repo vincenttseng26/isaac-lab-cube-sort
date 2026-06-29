@@ -6,6 +6,9 @@ The task extends the Isaac Lab cube stacking examples into a color sorting
 workflow: three cubes are spawned on the table and the robot places each cube on
 its matching fixed platform.
 
+This task uses Isaac Lab Mimic, the Isaac Lab implementation used for
+GR00T-Mimic-style synthetic trajectory generation.
+
 ## Included
 
 - Isaac Lab task overlay files for:
