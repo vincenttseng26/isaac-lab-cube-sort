@@ -100,6 +100,83 @@ Reports are written to `reports/` by default. You can inspect the scene with:
 ./isaaclab.sh -p /path/to/this/repo/tools/gui_view_sort.py --device cuda
 ```
 
+## Imitation Learning Workflow
+
+The full training workflow is not included as runnable data in this repository,
+but it follows the Isaac Lab teleoperation, Isaac Lab Mimic, and RoboMimic
+pipeline below.
+
+### 1. Collect Demonstrations
+
+Record keyboard teleoperation demonstrations for the sorting task:
+
+```bash
+cd ~/IsaacLab
+./isaaclab.sh -p scripts/tools/record_demos.py \
+  --task Isaac-Sort-Cube-Franka-IK-Rel-v0 \
+  --teleop_device keyboard \
+  --device cuda \
+  --dataset_file /path/to/datasets/sort_dataset_keyboard.hdf5 \
+  --num_demos 10
+```
+
+Keyboard controls:
+
+- `W` / `S`: move end-effector along x
+- `A` / `D`: move end-effector along y
+- `Q` / `E`: move end-effector along z
+- `K`: open or close the gripper
+- `R`: reset and discard the current episode
+
+### 2. Annotate Demonstrations
+
+Use the Mimic task wrapper to annotate grasp/place subtasks:
+
+```bash
+./isaaclab.sh -p scripts/imitation_learning/isaaclab_mimic/annotate_demos.py \
+  --input_file /path/to/datasets/sort_dataset_keyboard.hdf5 \
+  --output_file /path/to/datasets/sort_annotated_keyboard.hdf5 \
+  --task Isaac-Sort-Cube-Franka-IK-Rel-Mimic-v0 \
+  --auto
+```
+
+### 3. Generate Synthetic Trajectories
+
+Expand the annotated demonstrations into a larger synthetic dataset:
+
+```bash
+./isaaclab.sh -p scripts/imitation_learning/isaaclab_mimic/generate_dataset.py \
+  --input_file /path/to/datasets/sort_annotated_keyboard.hdf5 \
+  --output_file /path/to/datasets/sort_generated.hdf5 \
+  --num_envs 400 \
+  --generation_num_trials 1000 \
+  --headless
+```
+
+### 4. Train a Policy
+
+Train a RoboMimic BC-RNN-GMM policy:
+
+```bash
+./isaaclab.sh -p scripts/imitation_learning/robomimic/train.py \
+  --task Isaac-Sort-Cube-Franka-IK-Rel-v0 \
+  --algo bc \
+  --dataset /path/to/datasets/sort_generated.hdf5 \
+  --log_dir /path/to/training_logs
+```
+
+### 5. Play a Trained Policy
+
+Run the trained checkpoint in simulation:
+
+```bash
+./isaaclab.sh -p scripts/imitation_learning/robomimic/play.py \
+  --task Isaac-Sort-Cube-Franka-IK-Rel-v0 \
+  --num_rollouts 10 \
+  --checkpoint /path/to/training_logs/.../models/model_epoch_XXXX.pth \
+  --seed 100
+```
+
 ## Testing Scope
 
 This repository has been tested only for basic task loading and Isaac Lab Mimic
