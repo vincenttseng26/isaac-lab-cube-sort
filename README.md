@@ -195,6 +195,9 @@ Maintained by Vincent.
 This project adapts NVIDIA Isaac Lab and Isaac Lab Mimic examples for a custom
 Franka cube sorting task.
 
+If you need a Mandarin tutorial, here is a link for you:
+https://medium.com/p/d5fdf18f545e?postPublishedType=initial
+
 ## Acknowledgements
 
 This project is based on NVIDIA Isaac Lab and Isaac Lab Mimic.
