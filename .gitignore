@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Environments and local settings
+.env
+.venv/
+venv/
+env/
+.python-version
+.vscode/
+.idea/
+
+# Isaac Lab / learning artifacts
+datasets/
+checkpoints/
+training_logs/
+logs/
+runs/
+outputs/
+reports/
+*.hdf5
+*.pth
+*.pt
+*.ckpt
+*.mp4
+*.usd
+*.usda
+*.usdc
+
+# System files
+.DS_Store
+Thumbs.db

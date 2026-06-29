@@ -1,0 +1,14 @@
+This repository contains mixed-license code.
+
+- Files under `isaaclab_overlay/source/isaaclab_tasks/` are derived from
+  NVIDIA Isaac Lab and are licensed under BSD-3-Clause. See
+  `LICENSES/BSD-3-Clause.txt`.
+- Files under `isaaclab_overlay/source/isaaclab_mimic/` are derived from
+  NVIDIA Isaac Lab Mimic and are licensed under Apache-2.0. See
+  `LICENSES/Apache-2.0.txt`.
+- Repository documentation, helper scripts, and original glue code are
+  licensed under Apache-2.0 unless a file says otherwise.
+
+Original copyright notices and SPDX license identifiers are retained in the
+source files. This project is not affiliated with, sponsored by, or endorsed by
+NVIDIA.
