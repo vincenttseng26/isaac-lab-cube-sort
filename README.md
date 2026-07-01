@@ -174,7 +174,7 @@ Run the trained checkpoint in simulation:
   --task Isaac-Sort-Cube-Franka-IK-Rel-v0 \
   --num_rollouts 20 \
   --horizon 1800 \
-  --checkpoint /path/to/training_logs/.../models/model_epoch_2000.pth \
+  --checkpoint /path/to/training_logs/.../models/model_epoch_XXXX.pth \
   --seed 100
 ```
 
