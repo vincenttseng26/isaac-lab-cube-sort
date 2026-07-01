@@ -172,7 +172,7 @@ Run the trained checkpoint in simulation:
 ```bash
 ./isaaclab.sh -p scripts/imitation_learning/robomimic/play.py \
   --task Isaac-Sort-Cube-Franka-IK-Rel-v0 \
-  --num_rollouts 20 \
+  --num_rollouts 10 \
   --horizon 1800 \
   --checkpoint /path/to/training_logs/.../models/model_epoch_XXXX.pth \
   --seed 100
